@@ -109,7 +109,7 @@ networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 53 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
