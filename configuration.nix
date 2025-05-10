@@ -17,7 +17,7 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-networking.firewall.enable = false;
+networking.firewall.enable = true;
 networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   # Configure network proxy if necessary
