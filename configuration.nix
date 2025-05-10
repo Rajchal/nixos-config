@@ -82,6 +82,8 @@ networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   # Install firefox.
   programs.firefox.enable = true;
+services.flatpak.enable = true;
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
