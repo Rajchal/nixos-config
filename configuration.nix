@@ -19,6 +19,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 networking.firewall.enable = false;
 networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+networking.networkmanager.dns = "default";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
