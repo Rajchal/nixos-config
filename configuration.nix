@@ -20,7 +20,7 @@
 networking.firewall.enable = false;
 networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 networking.networkmanager.dns = "default";
-porgram.hyprland.enable=true
+programs.hyprland={enable=true;};
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -90,7 +90,11 @@ services.flatpak.enable = true;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   wineWowPackages.full
+  kitty
   winetricks
+  waybar
+  dunst
+  rofi-wayland
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
   unzip
