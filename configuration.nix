@@ -101,6 +101,7 @@ services.flatpak.enable = true;
   git
   vlc
   mpv
+  vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
