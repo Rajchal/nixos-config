@@ -102,6 +102,9 @@ services.flatpak.enable = true;
   vlc
   mpv
   vscode
+  python3
+  librewolf
+  python3Packages.virtualenv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
