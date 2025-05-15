@@ -17,10 +17,16 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-networking.firewall.enable = false;
-networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
-networking.networkmanager.dns = "default";
-programs.hyprland={enable=true;};
+
+boot.kernel.sysctl = {
+  "net.ipv6.conf.all.disable_ipv6" = 1;
+  "net.ipv6.conf.default.disable_ipv6" = 1;
+  "net.ipv6.conf.lo.disable_ipv6" = 1;
+};
+
+
+programs.hyprland.enable = true;
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -40,6 +46,7 @@ programs.hyprland={enable=true;};
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.greetd.enable = false;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
