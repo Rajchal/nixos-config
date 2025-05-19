@@ -4,22 +4,12 @@
 	imports =[./hardware-configuration.nix];# Include the results of the hardware scan.
 
 	# Bootloader.
-	boot.loader.grub.enable = true;
-	boot.loader.grub.device = "/dev/sda";
-	boot.loader.grub.useOSProber = true;
+	boot.loader.systemd-boot.enable = true;
+	boot.loader.efi.canTouchEfiVariables = true;
 
 	# Networking.
 	networking.hostName = "nixos"; # Define your hostname.
-	networking.networkmanager.enable = true;
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-	boot.kernel.sysctl = {
-		"net.ipv6.conf.all.disable_ipv6" = 1;
-		"net.ipv6.conf.default.disable_ipv6" = 1;
-		"net.ipv6.conf.lo.disable_ipv6" = 1;
-	};
-
-
-	programs.hyprland.enable = true;
 
 	# Configure network proxy if necessary
 	# networking.proxy.default = "http://user:password@proxy:port/";	
@@ -29,32 +19,22 @@
 	# Select internationalisation properties.
 	i18n.defaultLocale = "en_US.UTF-8";
 
-	# Enable the X11 windowing system.
-	# You can disable this if you're only using the Wayland session.
+	# Enable Hyprland and dependencies
+	programs.hyprland.enable = true;
+
 	services.xserver.enable = true;
-
-	# Enable the KDE Plasma Desktop Environment.
-	services.displayManager.sddm.enable = true;
-	services.greetd.enable = false;
-	services.desktopManager.plasma6.enable = true;
-
-	# Configure keymap in X11
-	services.xserver.xkb = {
-		layout = "us";
-		variant = "";
-	};
+	services.xserver.displayManager.sddm.enable = true; # Or use GDM if you prefer
+	services.xserver.windowManager.hyprland.enable = true;
 
 	# Enable CUPS to print documents.
 	services.printing.enable = true;
 
 	# Enable sound with pipewire.
 	hardware.pulseaudio.enable = false;
-	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true;
 		pulse.enable = true;
+		audio.enable = true;
 
 
 	# If you want to use JACK applications, uncomment this
@@ -76,15 +56,10 @@
 		description = "Anjal Rajchal";
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [
-			kdePackages.kate
-			#  thunderbird
+			firefox
+			kitty
 		];
 	};
-
-	# Install firefox.
-	programs.firefox.enable = true;
-	services.flatpak.enable = true;
-
 
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
