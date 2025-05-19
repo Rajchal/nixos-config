@@ -23,7 +23,9 @@
 	programs.hyprland.enable = true;
 
 	services.xserver.enable = true;
-	services.xserver.displayManager.sddm.enable = true; # Or use GDM if you prefer
+	services.xserver.displayManager.gdm.enable = true;
+	services.xserver.displayManager.gdm.wayland = true;
+
 	services.xserver.windowManager.hyprland.enable = true;
 
 	# Enable CUPS to print documents.
@@ -48,7 +50,7 @@
 	};
 
 	# Enable touchpad support (enabled default in most desktopManager).
-	# services.xserver.libinput.enable = true;
+	services.xserver.libinput.enable = true;
 
 	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.rajchal = {
@@ -79,6 +81,12 @@
 		vscode
 		python3
 		librewolf
+		grim
+		slurp
+		wl-clipboard
+		swaylock
+		swayidle
+		nwg-look
 		python3Packages.virtualenv
 	];
 
@@ -107,7 +115,8 @@
 	# on your system were taken. It‘s perfectly fine and recommended to leave
 	# this value at the release version of the first install of this system.
 	# Before changing this value read the documentation for this option
-	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html
+	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 	system.stateVersion = "24.11"; # Did you read the comment?
 	nixpkgs.config.allowUnfree = true;
 
